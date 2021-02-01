@@ -7,25 +7,27 @@ export async function FooterPageButton(){
   const $menu = document.createElement("footer");
   $menu.classList.add("footer");
 
-var init =   async function() {
+var init =  function() {
   const  cacheSize  = localStorage.getItem("cacheSize"),
             visorSize  = localStorage.getItem("visorSize"),
             activePage = localStorage.getItem("activePage");
    let totalElements = 0;  
-       await  ajax({
-                      url:api.API_HARNINA,
-                      cbSuccess : (posts)=>{             
-                          totalElements = posts.totalElements;   
-                          Pagination.Init(document.getElementById('pagination'), {       
-                                          totalPage:  Math.ceil(totalElements/visorSize), 
-                                          activePage:  activePage, 
-                                          step: 1,  // pages before and after current
-                                          totalElements: totalElements,
-                                          cacheSize : cacheSize
-                            });
-                            Router();
-                      }
-             }); 
+       return new Promise((resolve,reject)=>{
+           ajax({
+                          url:api.API_HARNINA,
+                          cbSuccess : (posts)=>{             
+                              totalElements = posts.totalElements;   
+                              Pagination.Init(document.getElementById('pagination'), {       
+                                              totalPage:  Math.ceil(totalElements/visorSize), 
+                                              activePage:  activePage, 
+                                              step: 1,  // pages before and after current
+                                              totalElements: totalElements,
+                                              cacheSize : cacheSize
+                                });
+                                // Router();
+                          }
+                 }); 
+       alert("sale de footer")})  
         //alert(totalElements); 
   // Podriamos hacer un acceso previo a los datos para conocer el total de elementos
     
