@@ -29,9 +29,23 @@ localStorage.setItem("cacheSize", cacheSize);
   $root.appendChild(Loader());
   //$root.appendChild(FooterPage());
   
-  FooterPageButton().then(()=>{
-    Router();
+  new Promise((resolve,reject)=>{
+    alert("Entra en Footer")
+    resolve(FooterPageButton())
+  }).then(()=>{
+    alert("Entra en el ajax")
+    try {
+      new Promise((resolve, reject) => {
+        alert("Entra en router");
+        resolve(Router())
+      });
+    } catch (e) {
+      return console.log(e);
+    }
   })
+
+  
+  }
     
    // Router(); Hay que arreglarlo o deberiamos
 
