@@ -7,13 +7,13 @@ export async function FooterPageButton(){
   const $menu = document.createElement("footer");
   $menu.classList.add("footer");
 
-var init =  function() {
+var init = async function() {
   const  cacheSize  = localStorage.getItem("cacheSize"),
             visorSize  = localStorage.getItem("visorSize"),
             activePage = localStorage.getItem("activePage");
    let totalElements = 0;  
-       return new Promise((resolve,reject)=>{
-           ajax({
+       
+          await ajax({
                           url:api.API_HARNINA,
                           cbSuccess : (posts)=>{             
                               totalElements = posts.totalElements;   
@@ -27,12 +27,12 @@ var init =  function() {
                                 // Router();
                           }
                  }); 
-       alert("sale de footer")})  
+       
         //alert(totalElements); 
   // Podriamos hacer un acceso previo a los datos para conocer el total de elementos
     
 };
-init();
+await init();
 }
 
 const Pagination = {
