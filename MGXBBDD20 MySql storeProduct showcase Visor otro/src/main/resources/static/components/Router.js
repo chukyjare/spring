@@ -269,17 +269,20 @@ const renderMenuPage = function(){
           document.getElementById("endPage").style.display = "block";
        }                  
 }
-const  callApiRest = async function(uri){  
-   await  ajax({
-              url:uri,
-              cbSuccess : (posts)=>{             
-                setState({
-                     data: posts                     
-                  });              
-                 renderShowcase();              
-              }
-        });
- document.querySelector(".loader").style.display = "none"; 
+const  callApiRest = function(uri){  
+    return new Promise((resolve, reject)=>{
+      ajax({
+        url:uri,
+        cbSuccess : (posts)=>{             
+          setState({
+               data: posts                     
+            });              
+           renderShowcase();              
+        }
+  });
+document.querySelector(".loader").style.display = "none";
+alert("sale de router")
+    })
 }
  if(!hash || hash == "#/"){     
      callApiRest(api.API_HARNINA);    
