@@ -29,24 +29,9 @@ localStorage.setItem("cacheSize", cacheSize);
   $root.appendChild(Loader());
   //$root.appendChild(FooterPage());
   
-  new Promise((resolve,reject)=>{
-    alert("Entra en Footer")
-    resolve(FooterPageButton())
-  }).then(async ()=>{
-    alert("Entra en el ajax")
-    try {
-      await new Promise((resolve, reject) => {
-        ajax({
-          url: api.API_HARNINA,
-          cbSuccess: (posts_1) => {
-            alert("Entra en router");
-            resolve(Router())
-          }
-        });
-      });
-    } catch (e) {
-      return console.log(e);
-    }
+  FooterPageButton().then(()=>{
+    Router();
+  })
     
    // Router(); Hay que arreglarlo o deberiamos
 
