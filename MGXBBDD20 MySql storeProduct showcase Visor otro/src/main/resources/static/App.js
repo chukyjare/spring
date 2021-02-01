@@ -43,12 +43,7 @@ localStorage.setItem("cacheSize", cacheSize);
       return console.log(e);
     }
   })
-
-  
-  }
     
    // Router(); Hay que arreglarlo o deberiamos
-
-
 
 }
