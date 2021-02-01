@@ -43,21 +43,25 @@ export async function Router(){
   }
    let {hash} = location;
    
-  $("changeshowcase").addEventListener("click",(e)=>{
+$("changeshowcase").addEventListener("click",(e)=>{
        switch (e.target.id ) {
             case 'showcaseshmJM': 
+               setState({activePageCache : 1});
               localStorage.setItem("showcaseType", "showcaseshmJM");
               renderShowcase();        
               break;         
             case 'showcaseshmCarrusel': 
+                setState({activePageCache : 1});
                 localStorage.setItem("showcaseType", "showcaseshmCarrusel");
                 renderShowcase();
                 break;
             case 'showcaseshmJesadri': 
+                setState({activePageCache : 1});
                 localStorage.setItem("showcaseType", "showcaseshmJesadri");
                 renderShowcase();
                 break;
             case 'showcaseshmSwipper':
+                  setState({activePageCache : 1});
                   localStorage.setItem("showcaseType", "showcaseshmSwipper");
                   renderShowcase();
                   break;  
@@ -70,10 +74,8 @@ export async function Router(){
                   callApiRest(url);   
                   localStorage.setItem("visorSize",visorSize); 
                    // if  (activePage < getState().data.totalelements/visorSize  or getState().data.pageable.pageSize)                 else {localStorage.setItem("activePage",1);}
-           
-              }
-              
 
+              }
               break;    
         }
    });
